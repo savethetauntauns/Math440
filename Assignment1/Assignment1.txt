@@ -1,0 +1,115 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+HOMEWORK ASSIGNMENT 1
+
+
+
+
+Lucas E Quintero
+23 September 2013
+MATH 440A
+Parallel Scientific Computing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Problem 1
+
+During the coding of problem one, we notice that for smaller values of N, the ill-conditioned Hilbert Matrix and the Binomial-Form Matrix are almost inverses. For values like N=2, we notice the output is a perfect inverse. The actual value may actually be lost from underflow, thus resulting in a 0. This is suspected as for the value of N=8, we notice that there are large deviations from the inverse as the trace of the product matrix of the ill-conditioned Hilbert and Binomial-Form matrices no longer is equal to N and the values above and below the diagonal are no longer exactly 0. 
+
+We also note the experimental values for the matrix with size N=100 [shown below in the tabulated values for Problem 2].
+
+
+Problem 2
+
+N	|	C[N/2][N/2]	|	C[N][N]		|	time(seconds)    
+100	|	1.08107e+06	|	3.55365e+07	|		0
+200	|	1.45209e+08	|	355329		|		1
+400	|	-1.23279e+07	|	1153.68		|		2
+800	|	-3133.12		|	205720		|		13
+1600	|	-2.09978e+06	|	3486.04		|		118
+3200	|*****COULD NOT RUN... KILLED AS TIME PASSED ~30 MINUTES*****
+
+Immediately we notice that the time to run increases non-linearly which raises concern for large values of N, as seen in the run for N=3200.
+
+Problem 3
+
+Programming and compilation completed. Done without large concerns or any output that raised questions, except in the analysis in Problem 5.
+
+
+
+
+Problem 4
+
+N	|	C[N/2][N/2]	|	C[N][N]		|time_A|time_B|time_A+B
+100	|	1.08107e+06	|	3.55365e+07	|	0 |	  0 |	0
+200	|	1.45209e+08	|	355329		|	1 |	  0 |	1
+400	|	-1.23279e+07	|	1153.68		|	2 |	  0 | 	2
+800	|	-3133.12		|	205720		|   11 |	  3 |    14
+1600	|	-2.09978e+06	|	3486.04		|   80 |	 40 |   120
+3200	|	-40354.2		|	-19061.6		|  630 |  375 |  1005
+	
+Problem 5
+
+When viewing the results of Q4 with respect to Q2, we notice that Q4 was greater than or equal to Q2 for time to run. We notice that for Q4, the majority of the work was required for part A, which included allocation and calculations of the ill-conditioned Hilbert and Binomial-Form matrices. For the differences, it may take longer to communicate than do computations, thus to write to disk then to read may cause the program in Q4 to run slower than Q2.
+
+For any k>5, I was not able to run 2^k. This is probably from an inability to hold all the values on RAM or cache.
+
+
+Problem 6
+
+Programming and compilation completed. Problems in reading in the time for computation and thus computing total time. time_C is typically a large value, thus making me believe that it is just off on reading in the files, though the values for C[N][N] match those above.
+
+
+Problem 7
+
+N	|	C[N/2][N/2]	|	C[N][N]		|time_R|time_W|time_C
+100	|	1.08107e+06	|	3.55365e+07	|   14 |	  0 |	##
+200	|	1.45209e+08	|	355329		|   15 |	  0 |	##
+400	|	-1.23279e+07	|	1153.68		|   32 |	  4 | 	##
+800	|	-3133.12		|	205720		|  110 |	 55 |     ##
+1600	|	-2.09978e+06	|	3486.04		|  804 |	397 |     ##
+
+All values larger than k>4 took too much time to compute and thus were omitted.
+
+
+
+Problem 8
+
+We notice that for times Q7>Q4>Q2. So we deduce that the time to communicate is costly and should be used in reserve. Though Q4 was able to compute N=3200, thus pointing out that maybe for larger N-values, those that have save to disk properties have an advantage of being able to compute the value while the code that does not save to disk may be faster, but cannot compute the large values.
